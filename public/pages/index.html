@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+  <title>ZoomImageScroll</title>
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background:#1e0f21;
+  }
+  .boardname{
+    position: absolute;
+    z-index: 9;
+    color: white;
+    font-size: 50px;
+    top: 120vh;
+    text-align: center;
+    width: 100%;
+  }
+  header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://2.bp.blogspot.com/-R-T9z4XhCFE/W87EN1hyorI/AAAAAAAAPYU/Df9oBQv2hvwPvwC8zOMagzJPwkNG5w7EwCLcBGAs/s1600/back-desktop%25401x.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  #header-front
+  {
+    top: 25.3125vw;
+      left: calc(52.65% - 65.98958333333333vw / 2);
+      width: 65.98958vw;
+      position: absolute;
+      z-index: 3;
+      height: auto;
+  }
+  #header-stones
+  {
+        position: absolute;
+      top: 35.08333vw;
+      left: 0;
+      width: 100%;
+      height: auto;
+  }
+  section {
+    width: 100%;
+    height: 1000px;
+  }
+  </style>
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      console.log("TEST");
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+</head>
+
+<body translate="no">
+  <header>
+    <div class="inner" style="transform: scale(1);"></div>
+  </header>
+
+  <section class="section">
+    <img id="header-stones" src="https://4.bp.blogspot.com/-KXFN5VqNsaA/W87Dl_Yp7YI/AAAAAAAAPYI/1Z7qSrHg6Hks6agjqTW1fls0aUinJXXzACLcBGAs/s1600/stones.png" alt="Stones in the background">
+    <img id="header-front" src="https://3.bp.blogspot.com/--DQy6E0J_Q8/W87Dy-VOMvI/AAAAAAAAPYM/9aj6WEfjHRMLV8J_L_bysCur6bA0CoL0gCLcBGAs/s1600/fireplace.png">
+  </section>
+
+  <div class="boardname">
+    <div class="col-md-12">
+      <p>세상의 모든 얕은 지식을 지 멋대로 모아놓은 개인 블로그</p>
+    </div>
+  </div>
+
+  <script id="rendered-js">
+    const inner = document.querySelector(".inner");
+    const section = document.querySelector(".section");
+
+    window.addEventListener("scroll", function() {
+      let value = window.pageYOffset / section.offsetTop + 1;
+      console.log(`value: ${value}`);
+      inner.style.transform = `scale(${value})`;
+    });
+  </script>
+</body>
+</html>

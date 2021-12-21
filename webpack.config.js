@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const rules = [
   {
@@ -18,6 +19,9 @@ const rules = [
         name: 'assets/img/[name].[contenthash].[ext]',
       }
     }
+  }, {
+    test: /\.bak$/,
+    loader: 'ignore-loader'
   }
 ];
 
@@ -29,6 +33,11 @@ const plugins = [
   }),
   new MiniCssExtractPlugin({
     filename: 'assets/css/[name].[chunkhash].css'
+  }),
+  new CopyWebpackPlugin({
+    patterns: [
+      { from: 'src/static/pages', to: 'pages', globOptions: { dot: true, ignore: ['**/*.bak'] } }
+    ]
   })
 ]
 
