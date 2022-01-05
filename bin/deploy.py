@@ -6,7 +6,7 @@ now = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 print(f"[STARTED] Starting deployment at {now}")
 
 app_root="/Users/cheonsoo.park/Workspace/chance/devnology"
-s3_bucket="s3://static.devnology.com"
+s3_bucket="s3://blog.devnology.co.kr"
 
 print("====================================================================================================")
 print("Building devnology")
