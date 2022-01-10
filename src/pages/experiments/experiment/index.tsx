@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { experiments } from '@/constants';
 
+import VisualizedArrayCompare from '@/components/visualizedArrayCompare';
+
 const SDiv = styled.div`
   width: 100%;
   height: ${window.screen.availHeight - 300}px;
@@ -16,6 +18,7 @@ const SIFrame = styled.iframe`
 `;
 
 const Experiment: React.FC = () => {
+  const [type, setType] = useState('');
   const [path, setPath] = useState('');
 
   const params = useParams();
@@ -23,14 +26,23 @@ const Experiment: React.FC = () => {
   useEffect(() => {
     if (params) {
       const id = params.id || '';
-      const _path = experiments[id].path;
-      setPath(_path);
+      const experiment = experiments[id];
+      setType(experiment.type);
+      setPath(experiment.path);
     }
   }, []);
 
+  function getComponent() {
+    const comp = VisualizedArrayCompare;
+    return React.createElement(comp, {});
+  };
+
   return (
     <SDiv>
-      <SIFrame src={path}></SIFrame>
+      {type === 'component' ?
+        (<>{getComponent()}</>) :
+        (<SIFrame src={path}></SIFrame>)
+      }
     </SDiv>
   );
 };

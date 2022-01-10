@@ -4698,6 +4698,11 @@ vfile@^5.0.0:
     unist-util-stringify-position "^3.0.0"
     vfile-message "^3.0.0"
 
+visualized-array-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/visualized-array-compare/-/visualized-array-compare-1.0.0.tgz#2566700ac3adef1ab0233af013ec82eafd93d3f1"
+  integrity sha512-XqY3MlX3vVKjgpQ7g0IrJsUoHBsw+UA7MQXS0I8rKTjvS/YhVaN0kLAkgRR7Zug7II6e9MYC+nIqjAA2bpWZ6A==
+
 watchpack@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.3.1.tgz#4200d9447b401156eeca7767ee610f8809bc9d25"
