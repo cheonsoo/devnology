@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 interface IPost {
   content: string
@@ -44,6 +45,7 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
         components={{
           code: InlineCode
         }}
+        remarkPlugins={[remarkGfm]}
       />) : (<NoMarkdownContentDiv>No Post Yet</NoMarkdownContentDiv>)}
     </MarkdownInnerDiv>
   </MarkdownContainerDiv>);
