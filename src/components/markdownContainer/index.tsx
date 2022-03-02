@@ -3,17 +3,11 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
+import MarkDownImage from '@/components/markdownContainer/markdownImage';
+import MarkDownCodeBlock from '@/components/markdownContainer/markdownCodeBlock';
+import NoPost from '@/components/markdownContainer/noPost';
 interface IPost {
   content: string
-};
-
-const InlineCodeBlock = styled.div`
-  background: #e9e9e9;
-  padding: 20px;
-  border-radius: 8px;
-`;
-function InlineCode(children: any) {
-  return (<InlineCodeBlock>{ children.children[0] }</InlineCodeBlock>);
 };
 
 const MarkdownContainerDiv = styled.div`
@@ -26,15 +20,6 @@ const MarkdownContainerDiv = styled.div`
 const MarkdownInnerDiv = styled.div`
   width: 900px
 `;
-const NoMarkdownContentDiv = styled.div`
-  width: 900px;
-  height: 500px;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  font-weight: 900;
-  font-size: 30px;
-`;
 
 const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
   return (<MarkdownContainerDiv>
@@ -43,10 +28,11 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
       <ReactMarkdown
         children={content}
         components={{
-          code: InlineCode
+          code: MarkDownCodeBlock,
+          img: MarkDownImage
         }}
         remarkPlugins={[remarkGfm]}
-      />) : (<NoMarkdownContentDiv>No Post Yet</NoMarkdownContentDiv>)}
+      />) : (<NoPost />)}
     </MarkdownInnerDiv>
   </MarkdownContainerDiv>);
 };

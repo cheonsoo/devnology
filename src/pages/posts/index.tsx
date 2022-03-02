@@ -51,10 +51,12 @@ const Posts: React.FC = () => {
     <div>
       <ListContainer>
         {Object.keys(posts).map((key, idx) => (
-          <li key={idx} onClick={() => handleClickItem(key)}>
-            <div>{posts[key].title}</div>
-            <div>{posts[key].desc}</div>
-          </li>
+          posts[key].publish && (
+            <li key={idx} onClick={() => handleClickItem(key)}>
+              <div>{posts[key].title}</div>
+              <div>{posts[key].desc}</div>
+            </li>
+          )
         ))}
       </ListContainer>
     </div>

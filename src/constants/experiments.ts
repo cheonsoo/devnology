@@ -24,7 +24,7 @@ const experiments: ObjType = {
     desc: 'Canvas 로 구현한 간단한 라인차트'
   },
   astar: {
-    path: '/pages/astar/latest/index.html',
+    path: '/pages/astar/v1.0.7/index.html',
     type: 'iframe',
     title: 'Astar Path Finding Algorighm V1.0.0',
     desc: 'Java Script 로 Astar 구현하기'

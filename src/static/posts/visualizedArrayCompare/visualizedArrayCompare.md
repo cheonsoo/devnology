@@ -6,7 +6,7 @@
 Canvas 로 한번 그려볼까?
 
 ### Sample UI  
-![Image](/posts/visualizedArrayCompare/visualizedArrayCompare_1.png)  
+![alt=sample;width=700px](/posts/visualizedArrayCompare/visualizedArrayCompare_1.png)  
 [Show Live Demo](http://blog.devnology.co.kr/experiment/visualizedArrayCompare)  
 &nbsp;&nbsp;  
 
@@ -49,7 +49,12 @@ cp2 = { x: (to.x + from.x) / 2, y: to.y } // 175, 300
 보는 것과 같이 화살표의 각도가 이상하다. 그래프의 각도가 커지면 커질수록 더 이상해진다.  
 &nbsp;
 
-![Image](/posts/visualizedArrayCompare/visualizedArrayCompare_2.png)  
+&nbsp;
+|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_2.png)|![width=300px;height=400px](/posts/visualizedArrayCompare/visualizedArrayCompare_3.png)|
+|:---:|:---:|
+|**[각도 수정 전]**|**[각도 수정 후]**|
+&nbsp;
+
 
 ```js
 /*
@@ -95,10 +100,8 @@ if (fillArrow)
 ctx.stroke();
 ```
 
-그래서 각도가 수정된 화살표의 모습은 아래와 같다.  
 &nbsp;
 
-![Image](/posts/visualizedArrayCompare/visualizedArrayCompare_3.png)  
 
 [WIKI: Bezier Curve](https://en.wikipedia.org/wiki/User_talk:Twirlip)  
 

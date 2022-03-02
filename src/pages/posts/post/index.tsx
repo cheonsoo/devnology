@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MarkdownContainer from '@/components/markdownContainer'
-import { posts } from '@/constants';
+// import { posts } from '@/constants';
 
 const Post: React.FC = () => {
   const [content, setContent] = useState('');
