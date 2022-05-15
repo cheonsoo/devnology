@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   height: 50px;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: left;
@@ -46,20 +46,26 @@ const StyledUl = styled.ul`
 const menus = [
   { path: '/', label: 'devnology' },
   { path: '/posts', label: 'posts' },
-  { path: '/experiments', label: 'experiments' },
-  { path: '/about', label: 'about' }
+  { path: '/apps', label: 'apps' },
+  // { path: '/experiments', label: 'experiments' },
+  { path: '/about', label: 'about' },
   // { path: '/zoomimagescroll', label: 'zoomimagescroll' },
   // { path: '/scrollbyscreen', label: 'scrollbyscreen' },
   // { path: '/timeline', label: 'timeline' }
   // { path: '/test', label: 'test' }
 ];
 
-const SubHeader:React.FC = () => {
+const SubHeader: React.FC = () => {
   return (
     <StyledDiv>
       <StyledUl>
         {menus.map((item, idx) => (
-          <li key={idx}><Link to={item.path}>{item.label.toUpperCase()}{idx < menus.length - 1 ? " | " : ""}</Link></li>
+          <li key={idx}>
+            <Link to={item.path}>
+              {item.label.toUpperCase()}
+              {idx < menus.length - 1 ? ' | ' : ''}
+            </Link>
+          </li>
         ))}
       </StyledUl>
     </StyledDiv>

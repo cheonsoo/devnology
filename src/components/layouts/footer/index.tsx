@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   color: #000;
   font-weight: 500;
-  margin-top: 50px;
+  margin-top: 0;
   border-top: 3px solid #e9e9e9;
   border-bottom: 10px solid #e9e9e9;
 
@@ -20,11 +20,11 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Footer:React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <StyledDiv>
       <div>
-        <div>Copyright @2021 Devnology</div>
+        <div>Copyright @2020 Devnology</div>
         <div>mansoo.app@gmail.com</div>
       </div>
     </StyledDiv>

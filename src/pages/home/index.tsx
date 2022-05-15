@@ -1,82 +1,81 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
 
-import Image1 from '@/static/img/night-sky-g1f3262fbb_1920.jpg';
-import Image2 from '@/static/img/church-g00bcdbd0a_1920.jpg';
+import Image1 from '@/static/img/night-sky.jpg';
+import Image2 from '@/static/img/field.jpg';
+import Image3 from '@/static/img/church.jpg';
 
-const StyledImageContainer = styled.div`
-  width: 100%;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transform: scale(1);
-`;
-
-const StyledHeader = styled.div`
-  position: absolute;
-  top: 300px;
-  z-index: 2;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 70px;
-  font-weight: 900;
-`;
-
-const StyledText = styled.div`
-  width: 100%;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  color: #000;
-  font-weight: 900;
-`;
+import './style.scss';
 
 const Home: React.FC = () => {
   const imageRef1 = useRef<HTMLImageElement>(null);
   const imageRef2 = useRef<HTMLImageElement>(null);
+  const imageRef3 = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     handleScrollImage();
   }, []);
 
   const handleScrollImage = () => {
-    const offset = 1000;
-    window.addEventListener("scroll", () => {
-      const valueForHeader = window.pageYOffset / offset + 1;
-      const valueForFooter = (3.5 - valueForHeader) > 1 ? 3.5 - valueForHeader : 1;
+    const img1 = imageRef1.current.querySelector('img');
+    const img2 = imageRef2.current.querySelector('img');
+    const img3 = imageRef3.current.querySelector('img');
+    const clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
 
-      if (imageRef1.current)
-        imageRef1.current.style.transform = `scale(${valueForHeader})`;
-      if (imageRef2.current)
-        imageRef2.current.style.transform = `scale(${valueForFooter})`;
+    img2.style.left = `${clientWidth}px`;
+
+    window.addEventListener('scroll', () => {
+      const scrollPoz = window.pageYOffset || document.documentElement.scrollTop;
+      const valueForHeader = scrollPoz / clientWidth + 1;
+      const valueForFooter = 2.5 - valueForHeader > 1 ? 2.5 - valueForHeader : 1;
+
+      if (imageRef1.current) {
+        if (img1) img1.style.transform = `scale(${valueForHeader})`;
+      }
+
+      if (imageRef2.current) {
+        if (img2) img2.style.left = clientWidth - clientWidth * (getVerticalScrollRatio() / 100) + 'px';
+      }
+
+      if (imageRef3.current) {
+        if (img3) img3.style.transform = `scale(${valueForFooter})`;
+      }
     });
   };
 
+  const getVerticalScrollRatio = () => {
+    const h = document.documentElement,
+      b = document.body,
+      st = 'scrollTop',
+      sh = 'scrollHeight';
+
+    const percent = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+    return percent;
+  };
+
   return (
-    <div>
-      <StyledImageContainer>
-        <StyledImage ref={imageRef1} src={Image1} />
-        <StyledHeader>DEVNOLOGY</StyledHeader>
-      </StyledImageContainer>
+    <div className="home_container">
+      <div className="banner_img" ref={imageRef1}>
+        <img alt="test" src={Image1} />
+        <div id="header-text" className="header_text">
+          DEVNOLOGY
+        </div>
+      </div>
 
-      <StyledText>세상의 모든 얕은 지식</StyledText>
+      <div className="text">얕은 지식 집합소</div>
 
-      <StyledText>제 맘대로 모아봤습니다</StyledText>
+      <div className="text">그리고 이것 저것 시도해보는 실험실</div>
 
-      <StyledText>시작할까요?</StyledText>
+      <div className="banner_img" ref={imageRef2}>
+        <img alt="test" className="imgHorizontalMove" src={Image2} />
+      </div>
 
-      <StyledImageContainer>
-        <StyledImage ref={imageRef2} src={Image2} />
-      </StyledImageContainer>
+      <div className="text">한번 둘러 보실래요?</div>
+
+      <div className="text">ㄱ ㄱ ㄱ</div>
+
+      <div className="banner_img" ref={imageRef3}>
+        <img alt="test" src={Image3} />
+      </div>
     </div>
   );
 };

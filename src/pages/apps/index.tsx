@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { getPosts } from '@/modules/posts/action';
+import { getApps } from '@/modules/apps/action';
 import { RootState } from '@/modules';
 
 type ObjType = {
@@ -46,32 +46,31 @@ const ListContainer = styled.ul`
   }
 `;
 
-const Posts: React.FC = () => {
-  const posts: ObjType = useSelector((state: RootState) => state.posts.posts);
-  // const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.posts);
+const Apps: React.FC = () => {
+  const apps: ObjType = useSelector((state: RootState) => state.apps.apps);
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const getPostsData = useCallback(() => dispatch(getPosts()), [dispatch]);
+  const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
 
   useEffect(() => {
-    getPostsData();
+    getAppsData();
   }, []);
 
   const handleClickItem = (key: string) => {
-    navigate(`/post/${key}`);
+    navigate(`/app/${key}`);
   };
 
   return (
     <div>
       <ListContainer>
-        {Object.keys(posts).map(
+        {Object.keys(apps).map(
           (key: string, idx: number) =>
-            posts[key].publish && (
+            apps[key].publish && (
               <li key={idx} onClick={() => handleClickItem(key)}>
-                <div>{posts[key].title}</div>
-                <div>{posts[key].desc}</div>
+                <div>{apps[key].title}</div>
+                <div>{apps[key].desc}</div>
               </li>
             )
         )}
@@ -80,4 +79,4 @@ const Posts: React.FC = () => {
   );
 };
 
-export default Posts;
+export default Apps;

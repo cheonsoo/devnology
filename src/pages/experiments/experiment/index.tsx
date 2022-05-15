@@ -35,16 +35,9 @@ const Experiment: React.FC = () => {
   function getComponent() {
     const comp = VisualizedArrayCompare;
     return React.createElement(comp, {});
-  };
+  }
 
-  return (
-    <SDiv>
-      {type === 'component' ?
-        (<>{getComponent()}</>) :
-        (<SIFrame src={path}></SIFrame>)
-      }
-    </SDiv>
-  );
+  return <SDiv>{type === 'component' ? <>{getComponent()}</> : <SIFrame src={path}></SIFrame>}</SDiv>;
 };
 
 export default Experiment;

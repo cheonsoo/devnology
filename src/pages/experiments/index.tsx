@@ -21,7 +21,7 @@ const ListContainer = styled.ul`
     cursor: pointer;
     padding: 10px 20px;
 
-    >div {
+    > div {
       width: 100%;
       height: 100%;
       display: flex;
@@ -29,22 +29,20 @@ const ListContainer = styled.ul`
       justify-content: left;
     }
 
-    >div:nth-child(1) {
+    > div:nth-child(1) {
       font-weight: 900;
       margin-bottom: 10px;
     }
-    >div:nth-child(1) {}
+    > div:nth-child(1) {
+    }
   }
 `;
-
-
 
 const Experiments: React.FC = () => {
   const navigate = useNavigate();
 
   const handleClickItem = (key: string) => {
     navigate(`/experiment/${key}`);
-
   };
 
   return (

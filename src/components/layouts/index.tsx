@@ -55,11 +55,11 @@ const Layout: React.FC = () => {
       {/* <div id='scrollmeter-div' /> */}
 
       <StyledContentArea>
-        <div>
-          <Suspense fallback={<StyledSuspense>Loading...</StyledSuspense>}>
-            <AppRoutes />
-          </Suspense>
-        </div>
+        {/* <div> */}
+        <Suspense fallback={<StyledSuspense>Loading...</StyledSuspense>}>
+          <AppRoutes />
+        </Suspense>
+        {/* </div> */}
       </StyledContentArea>
 
       <Footer />
