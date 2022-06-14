@@ -1,0 +1,46 @@
+.markdown-table {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 5px;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  /* thead {
+    border: 3px solid RGBA(1, 152, 122, 1.00);
+    border-bottom: 3px solid RGBA(1, 152, 122, 1.00);
+  } */
+
+  thead tr th {
+    background-color: RGBA(1, 152, 122, 1.00);
+    color: #fff;
+  }
+  thead tr th:first-child {
+    border-radius: 15px 0 0 0;
+  }
+  thead tr th:last-child {
+    border-radius: 0 15px 0 0;
+  }
+  thead tr th,
+  tbody tr td {
+    padding: 10px 15px;
+  }
+  tbody tr {
+    border-bottom: 2px solid RGBA(226, 226, 226, 1.00);
+  }
+  tbody tr:nth-child(2n) td {
+    /* color: red; */
+    /* color: RGBA(77, 78, 74, 1.00); */
+    color: RGBA(19, 147, 122, 1.00);
+    font-weight: 700;
+  }
+  tbody tr:nth-child(2n) {
+    background-color: RGBA(243, 243, 243, 1.00);
+  }
+  tbody tr:last-child {
+    border-bottom: 3px solid RGBA(1, 152, 122, 1.00);
+  }
+  tbody tr:hover {
+    background-color: RGBA(1, 152, 122, 0.2);
+    cursor: pointer;
+  }
+}

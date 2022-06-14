@@ -8,6 +8,8 @@ import MarkDownH1 from './markdownH1';
 import MarkDownH2 from './markdownH2';
 import MarkDownBlockQuote from './markdownBlockQuote';
 import NoPost from './noPost';
+
+import './style.scss';
 interface IPost {
   content: string;
 }
