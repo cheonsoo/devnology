@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from '@/router';
-import '@/App.css';
+import '@/styles/App.css';
 
 const App: React.FC = () => {
   return (
@@ -8,6 +8,6 @@ const App: React.FC = () => {
       <Router />
     </div>
   );
-}
+};
 
 export default App;

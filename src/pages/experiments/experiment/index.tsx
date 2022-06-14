@@ -32,12 +32,23 @@ const Experiment: React.FC = () => {
     }
   }, []);
 
+  function getIFrame() {
+    if (type.toLowerCase() === 's3') {
+      return <iframe width="100%" height="100%" src={path}></iframe>;
+    } else if (type.toLowerCase() === 'local') {
+      return <iframe width="100%" height="100%" src={path}></iframe>;
+    } else if (type.toLowerCase() === 'component') {
+      // TODO
+    }
+  }
+
   function getComponent() {
     const comp = VisualizedArrayCompare;
     return React.createElement(comp, {});
   }
 
-  return <SDiv>{type === 'component' ? <>{getComponent()}</> : <SIFrame src={path}></SIFrame>}</SDiv>;
+  // return <SDiv>{type === 'component' ? <>{getComponent()}</> : <SIFrame src={path}></SIFrame>}</SDiv>;
+  return <div style={{ width: '100%', height: '1000px' }}>{getIFrame()}</div>;
 };
 
 export default Experiment;

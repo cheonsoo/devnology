@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'ONE_Mobile_POP_OTF';
+  src: url('../assets/fonts/ONE_Mobile_POP_OTF.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ONE_Mobile_POP';
+  src: url('../assets/fonts/ONE_Mobile_POP.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'tway_fly';
+  src: url('../assets/fonts/tway_fly.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cafe24SsurroundAir';
+  src: url('../assets/fonts/Cafe24SsurroundAir.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ONE_Mobile_Regular';
+  src: url('../assets/fonts/ONE_Mobile_Regular.ttf') format('truetype');
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  /* font-family: 'ONE_Mobile_POP_OTF' !important; */
+  /* font-family: 'ONE_Mobile_POP' !important; */
+  /* font-family: 'ONE_Mobile_Regular' !important; */
+  /* font-family: 'tway_fly' !important; */
+  /* font-family: 'Cafe24SsurroundAir' !important; */
+
+  color: #000000;
+}
