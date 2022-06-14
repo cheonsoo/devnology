@@ -27,7 +27,7 @@ const Post: React.FC = () => {
   const dispatch = useDispatch();
   const getPostsData = useCallback(() => dispatch(getPosts()), [dispatch]);
 
-  const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.posts);
+  const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.list);
 
   const params = useParams();
 

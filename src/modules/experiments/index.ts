@@ -31,7 +31,7 @@ export const getPosts = () => {
 export const decrease = (): DecrementAction => ({ type: DECREMENT_COUNTER });
 
 function getPostsData() {
-  const url = 'http://static.devnology.co.kr/files/config/apps.json';
+  const url = 'http://static.devnology.co.kr/files/config/posts.json';
   return axios({
     url,
     method: 'GET',

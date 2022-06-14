@@ -47,7 +47,7 @@ const ListContainer = styled.ul`
 `;
 
 const Posts: React.FC = () => {
-  const posts: ObjType = useSelector((state: RootState) => state.posts.posts);
+  const posts: ObjType = useSelector((state: RootState) => state.posts.list);
   // const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.posts);
 
   const navigate = useNavigate();

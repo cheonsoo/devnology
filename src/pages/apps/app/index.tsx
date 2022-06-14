@@ -5,6 +5,24 @@ import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { getApps } from '@/modules/apps/action';
 import { isEmpty } from 'lodash';
 
+type ObjType = {
+  [key: string]: {
+    publish: boolean;
+    path: string;
+    desc: string;
+    title: string;
+    type: string;
+  };
+};
+
+interface IAppInfo {
+  publish: boolean;
+  path: string;
+  desc: string;
+  title: string;
+  type: string;
+}
+
 const SDiv = styled.div`
   width: 100%;
   height: ${window.screen.availHeight - 300}px;
@@ -17,17 +35,23 @@ const SIFrame = styled.iframe`
 `;
 
 const App: React.FC = () => {
-  const [appInfo, setAppInfo] = useState({});
+  const [appInfo, setAppInfo] = useState<IAppInfo>({ publish: false, path: '', desc: '', title: '', type: '' });
 
   const dispatch = useDispatch();
   const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
 
-  const apps: ObjType = useSelector((state: RootStateOrAny) => state.apps.apps);
+  const apps: ObjType = useSelector((state: RootStateOrAny) => state.apps.list);
 
   const params = useParams();
 
   useEffect(() => {
+    console.log('### id', params.id);
+  }, []);
+
+  useEffect(() => {
+    // Store 에 App 리스트가 없을 때 Direct 로 진입한 경우
     if (isEmpty(apps)) {
+      console.log('getting apps data ...');
       getAppsData();
     }
 
@@ -36,7 +60,7 @@ const App: React.FC = () => {
     }
   }, [apps]);
 
-  return <SDiv>{appInfo.path && <SIFrame src={appInfo.path}></SIFrame>}</SDiv>;
+  return <SDiv>{<SIFrame src={appInfo.path}></SIFrame>}</SDiv>;
 };
 
 export default App;

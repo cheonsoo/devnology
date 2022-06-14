@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledTitle = styled.div`
-  border-left: 5px solid green;
-  padding-left: 10px;
-  font-weight: 900;
-  font-size: 24px;
-`;
-
 const StyledTitleContainer = styled.div`
   width: 100%;
   height: 35px;
@@ -27,6 +20,8 @@ const StyledTitleMark = styled.div`
 const StyledTitleText = styled.div`
   font-weight: 900;
   font-size: 24px;
+  display: flex;
+  align-items: center;
 `;
 
 export default function MarkdownH2(props: any) {
@@ -37,7 +32,3 @@ export default function MarkdownH2(props: any) {
     </StyledTitleContainer>
   );
 }
-
-// export default function MarkdownH2(props: any) {
-//   return <StyledTitle>{props.children}</StyledTitle>;
-// }
