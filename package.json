@@ -4,8 +4,10 @@
   "description": "devnology by chance",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "webpack-dev-server --mode production",
+    "start:dev": "webpack-dev-server --mode development",
+    "build": "webpack",
+    "build:dev": "webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.7.1",
+    "dotenv": "^16.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "ignore-loader": "^0.1.2",

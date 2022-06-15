@@ -4,12 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getPosts } from '@/modules/posts/action';
 import { RootState } from '@/modules';
-
-type ObjType = {
-  [key: string]: {
-    [path: string]: string | boolean;
-  };
-};
+import { TypePosts } from '@/types';
 
 const ListContainer = styled.ul`
   width: 100%;
@@ -47,7 +42,7 @@ const ListContainer = styled.ul`
 `;
 
 const Posts: React.FC = () => {
-  const posts: ObjType = useSelector((state: RootState) => state.posts.list);
+  const posts: TypePosts = useSelector((state: RootState) => state.posts.list);
   // const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.posts);
 
   const navigate = useNavigate();

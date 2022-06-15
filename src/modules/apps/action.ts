@@ -11,7 +11,8 @@ export const getApps: any = () => {
 };
 
 function getAppsData() {
-  const url = 'http://static.devnology.co.kr/files/config/apps.json';
+  const url = `${process.env.REACT_APP_S3_BUCKET_STATIC}/files/config/apps.json`;
+  // const url = 'http://static.devnology.co.kr/files/config/apps.json';
   return axios({
     url,
     method: 'GET',

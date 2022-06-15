@@ -3283,6 +3283,7 @@ __metadata:
     babel-loader: ^8.2.3
     copy-webpack-plugin: ^10.2.0
     css-loader: ^6.7.1
+    dotenv: ^16.0.1
     file-loader: ^6.2.0
     html-loader: ^3.0.1
     html-webpack-plugin: ^5.5.0
@@ -3409,6 +3410,13 @@ __metadata:
     no-case: ^3.0.4
     tslib: ^2.0.3
   checksum: a65e3519414856df0228b9f645332f974f2bf5433370f544a681122eab59e66038fc3349b4be1cdc47152779dac71a5864f1ccda2f745e767c46e9c6543b1169
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "dotenv@npm:16.0.1"
+  checksum: f459ffce07b977b7f15d8cc4ee69cdff77d4dd8c5dc8c85d2d485ee84655352c2415f9dd09d42b5b5985ced3be186130871b34e2f3e2569ebc72fbc2e8096792
   languageName: node
   linkType: hard
 

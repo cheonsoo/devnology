@@ -4,24 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { getApps } from '@/modules/apps/action';
 import { isEmpty } from 'lodash';
-
-type ObjType = {
-  [key: string]: {
-    publish: boolean;
-    path: string;
-    desc: string;
-    title: string;
-    type: string;
-  };
-};
-
-interface IAppInfo {
-  publish: boolean;
-  path: string;
-  desc: string;
-  title: string;
-  type: string;
-}
+import { IApps, TypeApps } from '@/types';
 
 const SDiv = styled.div`
   width: 100%;
@@ -35,12 +18,12 @@ const SIFrame = styled.iframe`
 `;
 
 const App: React.FC = () => {
-  const [appInfo, setAppInfo] = useState<IAppInfo>({ publish: false, path: '', desc: '', title: '', type: '' });
+  const [appInfo, setAppInfo] = useState<IApps>({ publish: false, path: '', desc: '', title: '', type: '' });
 
   const dispatch = useDispatch();
   const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
 
-  const apps: ObjType = useSelector((state: RootStateOrAny) => state.apps.list);
+  const apps: TypeApps = useSelector((state: RootStateOrAny) => state.apps.list);
 
   const params = useParams();
 

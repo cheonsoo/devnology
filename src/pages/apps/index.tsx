@@ -1,15 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { getApps } from '@/modules/apps/action';
 import { RootState } from '@/modules';
-
-type ObjType = {
-  [key: string]: {
-    [path: string]: string | boolean;
-  };
-};
+import { TypeApps } from '@/types';
 
 const ListContainer = styled.ul`
   width: 100%;
@@ -47,7 +42,7 @@ const ListContainer = styled.ul`
 `;
 
 const Apps: React.FC = () => {
-  const apps: ObjType = useSelector((state: RootState) => state.apps.apps);
+  const apps: TypeApps = useSelector((state: RootState) => state.apps.list);
 
   const navigate = useNavigate();
 
