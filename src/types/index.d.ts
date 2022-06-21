@@ -10,15 +10,24 @@ export type TypeApps = {
   };
 };
 
-export type TypePosts = {
-  [key: string]: {
-    publish: boolean;
-    path: string;
-    desc: string;
-    title: string;
-    type: string;
-  };
+export type TPost = {
+  id: string;
+  publish: boolean;
+  path: string;
+  desc: string;
+  title: string;
+  type: string;
 };
+
+// export type TypePosts = {
+//   [key: string]: {
+//     publish: boolean;
+//     path: string;
+//     desc: string;
+//     title: string;
+//     type: string;
+//   };
+// };
 
 export interface IApps {
   publish: boolean;

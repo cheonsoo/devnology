@@ -11,27 +11,27 @@ const rules = [
   {
     test: /\.tsx?$/,
     exclude: /node_modules/,
-    loader: 'babel-loader',
+    loader: 'babel-loader'
   },
   {
     test: /\.css$|.scss$/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
   },
   {
     test: /\.(png|jpg|jpeg|svg)$/,
     use: {
       loader: 'file-loader',
       options: {
-        name: 'assets/img/[name].[contenthash].[ext]',
-      },
-    },
+        name: 'assets/img/[name].[contenthash].[ext]'
+      }
+    }
   },
   {
     test: /\.md$/,
     use: [
       {
-        loader: 'html-loader',
-      },
+        loader: 'html-loader'
+      }
       /*
       // Using another renderer in react component
       , {
@@ -42,32 +42,12 @@ const rules = [
           }
       }
       */
-    ],
+    ]
   },
   {
     test: /\.bak$/,
-    loader: 'ignore-loader',
-  },
-];
-
-const plugins = [
-  new HtmlWebpackPlugin({
-    template: 'index.html',
-    inject: 'body',
-    favicon: 'favicon.ico',
-  }),
-  new MiniCssExtractPlugin({
-    filename: 'assets/css/[name].[chunkhash].css',
-  }),
-  new CopyWebpackPlugin({
-    patterns: [
-      { from: 'src/static/pages', to: 'pages', globOptions: { dot: true, ignore: ['**/*.bak'] } },
-      { from: 'src/static/posts', to: 'posts', globOptions: { dot: true, ignore: ['**/*.bak'] } },
-    ],
-  }),
-  new webpack.DefinePlugin({
-    'process.env': JSON.stringify(process.env),
-  }),
+    loader: 'ignore-loader'
+  }
 ];
 
 module.exports = (env, options) => {
@@ -77,7 +57,7 @@ module.exports = (env, options) => {
   const mode = options.mode;
   dotenv.config(); // loads .env
   dotenv.config({
-    path: `.env.${mode}`,
+    path: `.env.${mode}`
   }); // loads & overwrite .env.[MODE] to .env
   console.log(process.env);
 
@@ -91,23 +71,41 @@ module.exports = (env, options) => {
       filename: 'assets/js/main.[chunkhash].js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/', // to make static resources in the asset directory absolute path
-      clean: true,
+      clean: true
     },
     module: {
-      rules,
+      rules
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.md'],
       alias: {
-        '@': path.resolve(__dirname, 'src'),
-      },
+        '@': path.resolve(__dirname, 'src')
+      }
     },
     devServer: {
       static: path.join(__dirname, './'),
       port: 3000,
-      historyApiFallback: { index: '/', disableDotRule: true },
+      historyApiFallback: { index: '/', disableDotRule: true }
     },
-    plugins,
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'index.html',
+        inject: 'body',
+        favicon: 'favicon.ico'
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'assets/css/[name].[chunkhash].css'
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'src/static/pages', to: 'pages', globOptions: { dot: true, ignore: ['**/*.bak'] } },
+          { from: 'src/static/posts', to: 'posts', globOptions: { dot: true, ignore: ['**/*.bak'] } }
+        ]
+      }),
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(process.env)
+      })
+    ]
   };
   return config;
 };

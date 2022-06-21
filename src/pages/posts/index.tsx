@@ -2,9 +2,9 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { getPosts } from '@/modules/posts/action';
+import { getPostsAction } from '@/modules/posts/action';
 import { RootState } from '@/modules';
-import { TypePosts } from '@/types';
+import { TPost } from '@/types';
 
 const ListContainer = styled.ul`
   width: 100%;
@@ -42,31 +42,30 @@ const ListContainer = styled.ul`
 `;
 
 const Posts: React.FC = () => {
-  const posts: TypePosts = useSelector((state: RootState) => state.posts.list);
-  // const posts: ObjType = useSelector((state: RootStateOrAny) => state.posts.posts);
+  const posts: TPost[] = useSelector((state: RootState) => state.posts.list);
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const getPostsData = useCallback(() => dispatch(getPosts()), [dispatch]);
+  const getPostsData = useCallback(() => dispatch(getPostsAction()), [dispatch]);
 
   useEffect(() => {
     getPostsData();
   }, []);
 
-  const handleClickItem = (key: string) => {
-    navigate(`/post/${key}`);
+  const handleClickItem = (id: string): void => {
+    navigate(`/post/${id}`);
   };
 
   return (
     <div>
       <ListContainer>
-        {Object.keys(posts).map(
-          (key: string, idx: number) =>
-            posts[key].publish && (
-              <li key={idx} onClick={() => handleClickItem(key)}>
-                <div>{posts[key].title}</div>
-                <div>{posts[key].desc}</div>
+        {posts.map(
+          (post: TPost, idx: number) =>
+            post.publish && (
+              <li key={idx} onClick={() => handleClickItem(post.id)}>
+                <div>{post.title}</div>
+                <div>{post.desc}</div>
               </li>
             )
         )}

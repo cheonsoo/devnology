@@ -2,13 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
-import { getPosts, getPostContent } from '@/modules/posts/action';
+import { getPostsAction } from '@/modules/posts/action';
+import { getPost } from '@/api/posts';
 import { isEmpty } from 'lodash';
 
 import MarkdownContainer from '@/components/markdownContainer';
 import NoPost from '@/components/markdownContainer/noPost';
 
-import { TypePosts } from '@/types';
+import { TPost } from '@/types';
 
 const StyledPostContainer = styled.div`
   width: 100%;
@@ -20,9 +21,9 @@ const Post: React.FC = () => {
   const [content, setContent] = useState('');
 
   const dispatch = useDispatch();
-  const getPostsData = useCallback(() => dispatch(getPosts()), [dispatch]);
+  const getPostsData = useCallback(() => dispatch(getPostsAction()), [dispatch]);
 
-  const posts: TypePosts = useSelector((state: RootStateOrAny) => state.posts.list);
+  const posts: TPost[] = useSelector((state: RootStateOrAny) => state.posts.list);
 
   const params = useParams();
 
@@ -37,8 +38,8 @@ const Post: React.FC = () => {
     }
 
     if (!isEmpty(posts) && params.id) {
-      const postInfo = posts[params.id];
-      getPostContent(postInfo.path).then((data: string) => setContent(data));
+      const postInfo = posts.find((post) => post.id === params.id);
+      if (postInfo) getPost(postInfo.path).then((data: string) => setContent(data));
     }
   }, [posts]);
 
