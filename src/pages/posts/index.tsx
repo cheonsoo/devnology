@@ -1,8 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { getPostsAction } from '@/modules/posts/action';
+import { getPostsActionImpl } from '@/modules/posts/action';
 import { RootState } from '@/modules';
 import { TPost } from '@/types';
 
@@ -47,7 +47,7 @@ const Posts: React.FC = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const getPostsData = useCallback(() => dispatch(getPostsAction()), [dispatch]);
+  const getPostsData = useCallback(() => dispatch(getPostsActionImpl()), [dispatch]);
 
   useEffect(() => {
     getPostsData();

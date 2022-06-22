@@ -17,6 +17,7 @@ export type TPost = {
   desc: string;
   title: string;
   type: string;
+  content: string;
 };
 
 // export type TypePosts = {
