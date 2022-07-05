@@ -26,7 +26,8 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
               h1: MarkDownH1,
               h2: MarkDownH2,
               blockquote: MarkDownBlockQuote,
-              table: ({ node, ...props }) => <table className="markdown-table" {...props}></table>,
+              p: ({ node, ...props }) => <span {...props} style={{ margin: '10px', display: 'block' }}></span>,
+              table: ({ node, ...props }) => <table className="markdown-table" {...props}></table>
               // blockquote: ({ node, ...props }) => <div style={{ color: 'red' }} {...props}></div>,
               // h2: ({ node, ...props }) => <div style={{ color: 'red' }} {...props}></div>,
             }}
