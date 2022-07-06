@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const StyledDiv = styled.div`
   height: 50px;
@@ -48,7 +49,7 @@ const menus = [
   { path: '/posts', label: 'posts' },
   { path: '/apps', label: 'apps' },
   // { path: '/experiments', label: 'experiments' },
-  { path: '/about', label: 'about' },
+  { path: '/about', label: 'about' }
   // { path: '/zoomimagescroll', label: 'zoomimagescroll' },
   // { path: '/scrollbyscreen', label: 'scrollbyscreen' },
   // { path: '/timeline', label: 'timeline' }
@@ -56,6 +57,10 @@ const menus = [
 ];
 
 const SubHeader: React.FC = () => {
+  useEffect(() => {
+    console.log(moment().format('YYYY-MM-DD HH:MM:SS'));
+  }, []);
+
   return (
     <StyledDiv>
       <StyledUl>

@@ -6,40 +6,68 @@ import { getPostsActionImpl } from '@/modules/posts/action';
 import { RootState } from '@/modules';
 import { TPost } from '@/types';
 
-const ListContainer = styled.ul`
-  width: 100%;
-  height: 100%;
-  list-style: none;
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-  li {
-    width: 85%;
-    min-height: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    border: 1px solid gray;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 10px 20px;
+const ListContainer = styled.div`
+  margin: 50px;
 
-    > div {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: left;
-    }
+  .table_posts {
+    border-bottom: 5px solid #3e957b;
 
-    > div:nth-child(1) {
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-    > div:nth-child(1) {
+    .table_row {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #dddddd;
+      }
+
+      .table_cell {
+        width: 100%;
+
+        .table_cell_line {
+          width: 100%;
+          height: 30px;
+          display: flex;
+          justify-content: left;
+          align-items: center;
+
+          &.title {
+            font-weight: 900;
+          }
+        }
+      }
     }
   }
 `;
+
+const StyledTableCell = styled(TableCell)(() => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: '#3E957B',
+    color: '#fff',
+    fontWeight: '900',
+    borderRadius: '8px 8px 0 0'
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14
+  }
+}));
+
+const StyledTableRow = styled(TableRow)(() => ({
+  '&:nth-of-type(odd)': {
+    // backgroundColor: theme.palette.action.hover
+    backgroundColor: '#eeeeee'
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0
+  }
+}));
 
 const Posts: React.FC = () => {
   const posts: TPost[] = useSelector((state: RootState) => state.posts.list);
@@ -58,19 +86,30 @@ const Posts: React.FC = () => {
   };
 
   return (
-    <div>
-      <ListContainer>
-        {posts.map(
-          (post: TPost, idx: number) =>
-            post.publish && (
-              <li key={idx} onClick={() => handleClickItem(post.id)}>
-                <div>{post.title}</div>
-                <div>{post.desc}</div>
-              </li>
-            )
-        )}
-      </ListContainer>
-    </div>
+    <ListContainer>
+      <TableContainer component={Paper}>
+        <Table className="table_posts" sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="left">POSTS</StyledTableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {posts
+              .filter((post: TPost) => post.publish)
+              .map((post: TPost, idx: number) => (
+                <StyledTableRow className="table_row" key={idx} onClick={() => handleClickItem(post.id)}>
+                  <StyledTableCell className="table_cell" component="th" scope="row">
+                    <div className="table_cell_line title">{post.title}</div>
+                    <div className="table_cell_line">{post.desc}</div>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </ListContainer>
   );
 };
 

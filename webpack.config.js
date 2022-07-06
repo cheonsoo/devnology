@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const dotenv = require('dotenv');
 const path = require('path');
 // const marked = require("marked");
@@ -104,6 +106,12 @@ module.exports = (env, options) => {
       }),
       new webpack.DefinePlugin({
         'process.env': JSON.stringify(process.env)
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        generateStatsFile: true,
+        statsFilename: 'bundle-report.json'
       })
     ]
   };
