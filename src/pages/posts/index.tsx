@@ -69,7 +69,7 @@ const StyledTableRow = styled(TableRow)(() => ({
   }
 }));
 
-const Posts: React.FC = () => {
+const Posts = () => {
   const posts: TPost[] = useSelector((state: RootState) => state.posts.list);
 
   const navigate = useNavigate();

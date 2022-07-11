@@ -31,13 +31,6 @@
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.7",
     "@mui/styles": "^5.8.7",
-    "@types/lodash": "^4.14.182",
-    "@types/react": "latest",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-redux": "^7.1.20",
-    "@types/react-router-dom": "^5.3.2",
-    "@types/redux-actions": "^2.6.2",
-    "@types/styled-components": "^5.1.18",
     "axios": "^0.27.2",
     "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^10.2.0",
@@ -73,9 +66,20 @@
     "webpack-dev-server": "^4.6.0"
   },
   "devDependencies": {
+    "@material-ui/types": "^5.1.0",
+    "@types/axios": "^0.14.0",
+    "@types/lodash": "^4.14.182",
+    "@types/material-ui": "^0.21.12",
+    "@types/react": "latest",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-redux": "^7.1.20",
+    "@types/react-router-dom": "^5.3.2",
+    "@types/redux-actions": "^2.6.2",
+    "@types/styled-components": "^5.1.18",
     "html-loader": "^3.0.1",
     "markdown-loader": "^6.0.0",
     "moment": "^2.29.3",
     "webpack-bundle-analyzer": "^4.5.0"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }

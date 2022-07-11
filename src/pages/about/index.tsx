@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import MarkdownContainer from '@/components/markdownContainer';
@@ -10,21 +11,21 @@ const StyledPostContainer = styled.div`
   padding: 40px 20px 20px 20px;
 `;
 
-const About: React.FC = () => {
-  const [content, setContent] = useState('');
+const About = () => {
+  const [content, setContent] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     getPost();
   }, []);
 
-  const getPost = (_id: string) => {
+  const getPost = () => {
     const url = `http://static.devnology.co.kr/files/posts/about/index.md`;
     axios({
       url,
-      method: 'GET',
+      method: 'GET'
     })
-      .then((res) => res.data)
-      .then((data) => setContent(data));
+      .then((res: any) => res.data)
+      .then((data: any) => setContent(data));
   };
 
   return <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>;

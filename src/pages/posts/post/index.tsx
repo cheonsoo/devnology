@@ -7,7 +7,9 @@ import { getPost } from '@/api/posts';
 import { isEmpty } from 'lodash';
 
 import MarkdownContainer from '@/components/markdownContainer';
+import PostList from '@/pages/posts';
 import NoPost from '@/components/markdownContainer/noPost';
+import Splitter from '@/components/atoms/Splitter';
 
 import { TPost } from '@/types';
 
@@ -17,7 +19,7 @@ const StyledPostContainer = styled.div`
   padding: 40px 20px 20px 20px;
 `;
 
-const Post: React.FC = () => {
+const Post = () => {
   const [content, setContent] = useState('');
 
   const dispatch = useDispatch();
@@ -42,7 +44,20 @@ const Post: React.FC = () => {
     }
   }, [posts]);
 
-  return <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>;
+  return (
+    <div>
+      <div>
+        <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>
+      </div>
+
+      <Splitter />
+
+      <div>
+        <div>다른 포스트 보기</div>
+        <PostList />
+      </div>
+    </div>
+  );
 };
 
 export default Post;

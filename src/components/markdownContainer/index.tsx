@@ -43,4 +43,4 @@ const MarkdownContainer: React.FC<IPost> = ({ content = '' }) => {
   );
 };
 
-export default MarkdownContainer;
+export default React.memo(MarkdownContainer);
