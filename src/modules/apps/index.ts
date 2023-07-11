@@ -14,11 +14,11 @@ interface DecrementAction {
 }
 
 interface InitialState {
-  posts: object;
+  apps: object;
 }
 
 const initialState: InitialState = {
-  posts: {},
+  apps: {}
 };
 
 export const getPosts = () => {
@@ -36,8 +36,8 @@ function getPostsData() {
     url,
     method: 'GET',
     headers: {
-      contentType: 'application/json',
-    },
+      contentType: 'application/json'
+    }
   })
     .then((res) => res.data)
     .then((data) => data);

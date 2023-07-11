@@ -63,13 +63,13 @@ const Home: React.FC = () => {
 
       <div className="text">얕은 지식 집합소</div>
 
-      <div className="text">그리고 이것 저것 시도해보는 실험실</div>
+      <div className="text">심심해서 만듬</div>
 
       <div className="banner_img" ref={imageRef2}>
         <img alt="test" className="imgHorizontalMove" src={Image2} />
       </div>
 
-      <div className="text">한번 둘러 보실래요?</div>
+      <div className="text">한번 둘러보실라우?</div>
 
       <div className="text">ㄱ ㄱ ㄱ</div>
 

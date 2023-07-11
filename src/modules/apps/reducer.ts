@@ -6,7 +6,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  list: {},
+  list: []
 };
 
 type Action = ReturnType<typeof getApps>;

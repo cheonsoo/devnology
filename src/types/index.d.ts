@@ -31,6 +31,7 @@ export type TPost = {
 // };
 
 export interface IApps {
+  id: string;
   publish: boolean;
   path: string;
   desc: string;

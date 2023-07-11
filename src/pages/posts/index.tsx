@@ -81,6 +81,11 @@ const Posts = () => {
     getPostsData();
   }, []);
 
+  useEffect(() => {
+    console.log('### posts');
+    console.log(posts);
+  }, [posts]);
+
   const handleClickItem = (id: string): void => {
     navigate(`/post/${id}`);
   };

@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
   return (
     <StyledDiv>
       <div>
-        <div>Copyright @2020 Devnology</div>
+        <div>Copyright @2020 Devnology (v.1.0.0)</div>
         <div>mansoo.app@gmail.com</div>
       </div>
     </StyledDiv>

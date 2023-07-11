@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { getApps } from '@/modules/apps/action';
 import { isEmpty } from 'lodash';
+import { getApp } from '@/api/apps';
 import { IApps, TypeApps } from '@/types';
 
 const SDiv = styled.div`
@@ -18,7 +19,8 @@ const SIFrame = styled.iframe`
 `;
 
 const App: React.FC = () => {
-  const [appInfo, setAppInfo] = useState<IApps>({ publish: false, path: '', desc: '', title: '', type: '' });
+  const [content, setContent] = useState('');
+  const [appInfo, setAppInfo] = useState<IApps>({ id: '', publish: false, path: '', desc: '', title: '', type: '' });
 
   const dispatch = useDispatch();
   const getAppsData = useCallback(() => dispatch(getApps()), [dispatch]);
@@ -32,6 +34,7 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    console.log('### TEST');
     // Store 에 App 리스트가 없을 때 Direct 로 진입한 경우
     if (isEmpty(apps)) {
       console.log('getting apps data ...');
@@ -39,7 +42,17 @@ const App: React.FC = () => {
     }
 
     if (!isEmpty(apps) && params.id) {
-      setAppInfo(apps[params.id]);
+      getApp(params.id)
+        .then((data: IApps[]) => {
+          console.log('### apps', data);
+          return data.find((app) => app.id === params.id);
+        })
+        .then((data: IApps) => {
+          console.log('### data: ', data);
+          console.log('### data: ', data.path);
+          // setContent(data.path);
+          setAppInfo(data);
+        });
     }
   }, [apps]);
 

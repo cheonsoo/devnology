@@ -52,10 +52,10 @@ const Post = () => {
 
       <Splitter />
 
-      <div>
+      {/* <div>
         <div>다른 포스트 보기</div>
         <PostList />
-      </div>
+      </div> */}
     </div>
   );
 };
