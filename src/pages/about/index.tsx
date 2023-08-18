@@ -14,11 +14,23 @@ const StyledPostContainer = styled.div`
 const About = () => {
   const [content, setContent] = React.useState('');
 
+  try {
+    throw new Error("### Manually Produced Error ###");
+  } catch (e) {
+    console.debug(e.message);
+  }
+
   React.useEffect(() => {
     getPost();
   }, []);
 
   const getPost = () => {
+    try {
+      functionDoesntExists();
+    } catch (e) {
+      console.debug(e.message);
+    }
+
     const url = `http://static.devnology.co.kr/files/posts/about/index.md`;
     axios({
       url,
@@ -28,7 +40,18 @@ const About = () => {
       .then((data: any) => setContent(data));
   };
 
-  return <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>;
+  const fnTest = () => {
+    try {
+      fnTestNoExists();
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+
+  return <div>
+    <StyledPostContainer>{content ? <MarkdownContainer content={content} /> : <NoPost />}</StyledPostContainer>
+    <div onClick={fnTest}>.</div>
+  </div>;
 };
 
 export default About;

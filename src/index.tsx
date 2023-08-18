@@ -7,12 +7,17 @@ import * as Sentry from '@sentry/react';
 
 import App from '@/App';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 Sentry.init({
   dsn: "https://6459422c27f74e1e888875acaf6027af@o4505543250804736.ingest.sentry.io/4505543301464064",
   integrations: [
     new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-      tracePropagationTargets: ["localhost", "https:yourserver.io/api/"],
+      tracePropagationTargets: ["localhost", "http://blog.devnology.co.kr"],
     }),
     new Sentry.Replay(),
   ],
